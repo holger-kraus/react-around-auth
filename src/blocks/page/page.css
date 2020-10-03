@@ -3,6 +3,7 @@
   color: #FFFFFF;
   background-color: #000000;
   font-family: 'Inter', 'Arial', sans-serif;
+  min-height: 100vh;
 }
 
 @media (max-width : 425px) {

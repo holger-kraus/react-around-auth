@@ -1,0 +1,9 @@
+.message__text {
+  margin-top: 32px;
+  color: #000000;
+  width: 358px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29px;
+}

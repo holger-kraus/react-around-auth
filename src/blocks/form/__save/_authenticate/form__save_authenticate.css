@@ -1,0 +1,11 @@
+.form__save_authenticate {
+  margin: 216px 0 0;
+  color: #000000;
+  background-color: #FFFFFF;
+  border-radius: 2px;
+}
+
+.form__save_authenticate:hover {
+  background-color: #FFFFFF;
+  color: #000000;
+}

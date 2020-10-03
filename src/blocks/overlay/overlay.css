@@ -2,6 +2,7 @@
 @import url("__container/_profile/overlay__container_profile.css");
 @import url("__container/_place/overlay__container_place.css");
 @import url("__container/_image/overlay__container_image.css");
+@import url("__container/_message/overlay__container_message.css");
 @import url("__container/_avatarpic/overlay__container_avatarpic.css");
 @import url("__container/_confirmation/overlay__container_confirmation.css");
 @import url("__close-button/overlay__close-button.css");
