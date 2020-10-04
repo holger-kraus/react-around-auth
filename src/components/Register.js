@@ -7,7 +7,6 @@ function Register(props) {
     const passwordRef = React.useRef();
 
     function handleSubmit(e) {
-        console.log("Submit");
         e.preventDefault();
 
         props.onSignup({
@@ -34,7 +33,7 @@ function Register(props) {
                            placeholder="Password" required/>
                 </label>
                 <button type="submit" className="form__save form__save_authenticate">Sign up</button>
-                <Link to="/login" className="form__save-hint">Already a member? Log in here!</Link>
+                <Link to="/signin" className="form__save-hint">Already a member? Log in here!</Link>
             </form>
         </section>
     );

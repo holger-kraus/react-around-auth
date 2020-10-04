@@ -54,7 +54,6 @@ class Authentication {
             headers: headers,
             body: body
         }).then((res) => {
-            console.log(res);
             if (res.ok) {
                 return res.json();
             }

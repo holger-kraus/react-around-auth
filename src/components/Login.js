@@ -33,7 +33,7 @@ function Login(props) {
                            placeholder="Password" required/>
                 </label>
                 <button type="submit" className="form__save form__save_authenticate">Log in</button>
-                <Link to="/register" className="form__save-hint">Not a member yet? Sign up here!</Link>
+                <Link to="/signup" className="form__save-hint">Not a member yet? Sign up here!</Link>
             </form>
         </section>
     );

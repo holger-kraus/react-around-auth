@@ -187,7 +187,7 @@ function App() {
     function handleLogout() {
         setLoggedIn(false);
         localStorage.removeItem('token');
-        history.push('/login');
+        history.push('/signin');
     }
 
     function tokenCheck() {
@@ -210,12 +210,12 @@ function App() {
         <div className="page">
             <CurrentUserContext.Provider value={currentUser}>
                 <Switch>
-                    <Route path="/login">
-                        <Header loggedIn={loggedIn} email={userEmail} link={{description: 'Sign up', to: '/register'}}/>
+                    <Route path="/signin">
+                        <Header loggedIn={loggedIn} email={userEmail} link={{description: 'Sign up', to: '/signup'}}/>
                         <Login onSignin={handleSignin}/>
                     </Route>
-                    <Route path="/register">
-                        <Header loggedIn={loggedIn} email={userEmail} link={{description: 'Log in', to: '/login'}}/>
+                    <Route path="/signup">
+                        <Header loggedIn={loggedIn} email={userEmail} link={{description: 'Log in', to: '/signin'}}/>
                         <Register onSignup={handleSignup}/>
                     </Route>
                     <ProtectedRoute path="/" loggedIn={loggedIn}>
