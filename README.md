@@ -43,7 +43,7 @@ In detail the following technologies and methods have been used:
 
  ### Have a look!
 
-The page is installed on Github Pages [here](https://holger-kraus.github.io/around-react/).
+The page is installed on Github Pages [here](https://holger-kraus.github.io/react-around-auth/).
 
 ### How to run it
 
@@ -93,4 +93,3 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 To learn React, check out the [React documentation](https://reactjs.org/).
 
 
- 
