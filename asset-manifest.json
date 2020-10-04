@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/around-react-auth/static/css/main.dbf2dd4d.chunk.css",
+    "main.js": "/around-react-auth/static/js/main.6fbc93fa.chunk.js",
+    "main.js.map": "/around-react-auth/static/js/main.6fbc93fa.chunk.js.map",
+    "runtime-main.js": "/around-react-auth/static/js/runtime-main.d1f55368.js",
+    "runtime-main.js.map": "/around-react-auth/static/js/runtime-main.d1f55368.js.map",
+    "static/js/2.b4d7ddef.chunk.js": "/around-react-auth/static/js/2.b4d7ddef.chunk.js",
+    "static/js/2.b4d7ddef.chunk.js.map": "/around-react-auth/static/js/2.b4d7ddef.chunk.js.map",
+    "index.html": "/around-react-auth/index.html",
+    "precache-manifest.c4295428c61be6aa898bb8ce4f83614a.js": "/around-react-auth/precache-manifest.c4295428c61be6aa898bb8ce4f83614a.js",
+    "service-worker.js": "/around-react-auth/service-worker.js",
+    "static/css/main.dbf2dd4d.chunk.css.map": "/around-react-auth/static/css/main.dbf2dd4d.chunk.css.map",
+    "static/js/2.b4d7ddef.chunk.js.LICENSE.txt": "/around-react-auth/static/js/2.b4d7ddef.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/around-react-auth/static/media/pen.d476a8b8.svg",
+    "static/media/failure.svg": "/around-react-auth/static/media/failure.4072126c.svg",
+    "static/media/logo-white.svg": "/around-react-auth/static/media/logo-white.8f7611ae.svg",
+    "static/media/success.svg": "/around-react-auth/static/media/success.e38b395c.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d1f55368.js",
+    "static/js/2.b4d7ddef.chunk.js",
+    "static/css/main.dbf2dd4d.chunk.css",
+    "static/js/main.6fbc93fa.chunk.js"
+  ]
+}
