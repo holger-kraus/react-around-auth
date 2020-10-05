@@ -177,6 +177,7 @@ function App() {
                 setLoggedIn(true);
                 localStorage.setItem('token', data.token);
                 history.push('/');
+                tokenCheck();
             }
         }).catch((err) => {
             setIsInfoToolTipOpen(true);
@@ -191,7 +192,6 @@ function App() {
     }
 
     function tokenCheck() {
-        console.log("tokenCheck");
         const token = localStorage.getItem('token');
         if (token) {
             authentication.getMyIdentity(token).then((res) => {
