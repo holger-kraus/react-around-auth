@@ -5,12 +5,14 @@ class Api {
         this.headers = options.headers;
     }
 
-    getProfile() {
+    getProfile(token) {
+        this.headers["Authorization"] = "Bearer ".concat(token);
         const profileUri = this.baseUrl.concat("/users/me");
         return this._getResource(profileUri);
     }
 
-    updateProfile(name, about) {
+    updateProfile(name, about, token) {
+        this.headers["Authorization"] = "Bearer ".concat(token);
         const profileUri = this.baseUrl.concat("/users/me");
         const body = JSON.stringify({
             name: name,
@@ -19,7 +21,8 @@ class Api {
         return this._sendRequestWithBody(profileUri, body, "PATCH");
     }
 
-    updateProfilePicture(avatarLink) {
+    updateProfilePicture(avatarLink, token) {
+        this.headers["Authorization"] = "Bearer ".concat(token);
         const profileUri = this.baseUrl.concat("/users/me/avatar");
         const body = JSON.stringify({
             avatar: avatarLink
@@ -27,12 +30,14 @@ class Api {
         return this._sendRequestWithBody(profileUri, body, "PATCH");
     }
 
-    getInitialCards() {
+    getInitialCards(token) {
+        this.headers["Authorization"] = "Bearer ".concat(token);
         const cardsUri = this.baseUrl.concat("/cards");
         return this._getResource(cardsUri);
     }
 
-    addCard(name, link) {
+    addCard(name, link, token) {
+        this.headers["Authorization"] = "Bearer ".concat(token);
         const cardsUri = this.baseUrl.concat("/cards");
         const body = JSON.stringify( {
             name: name,
@@ -41,22 +46,24 @@ class Api {
         return this._sendRequestWithBody(cardsUri, body, "POST");
     }
 
-    changeLikeCardStatus(cardId, isLiked) {
+    changeLikeCardStatus(cardId, isLiked, token) {
+        this.headers["Authorization"] = "Bearer ".concat(token);
         return isLiked ? this._addLike(cardId) : this._deleteLike(cardId);
     }
 
-    deleteCard(cardId) {
+    deleteCard(cardId, token) {
+        this.headers["Authorization"] = "Bearer ".concat(token);
         const cardUri = this.baseUrl.concat("/cards/").concat(cardId);
         return this._sendRequestWithoutBody(cardUri, "DELETE");
     }
 
     _addLike(cardId) {
-        const likeUri = this.baseUrl.concat("/cards/likes/").concat(cardId);
+        const likeUri = this.baseUrl.concat("/cards/").concat(cardId).concat("/likes");
         return this._sendRequestWithoutBody(likeUri, "PUT");
     }
 
     _deleteLike(cardId) {
-        const likeUri = this.baseUrl.concat("/cards/likes/").concat(cardId);
+        const likeUri = this.baseUrl.concat("/cards/").concat(cardId).concat("/likes");
         return this._sendRequestWithoutBody(likeUri, "DELETE");
     }
 
@@ -68,6 +75,10 @@ class Api {
                 return res.json();
             }
             return Promise.reject(`Error: ${res.status}`);
+        }).then((json) => {
+            if (json && json.data) {
+                return json.data;
+            }
         });
     }
 
@@ -80,6 +91,10 @@ class Api {
                 return res.json();
             }
             return Promise.reject(`Error: ${res.status}`);
+        }).then((json) => {
+            if (json && json.data) {
+                return json.data;
+            }
         });
     }
 
@@ -93,15 +108,20 @@ class Api {
                 return res.json();
             }
             return Promise.reject(`Error: ${res.status}`);
+        }).then((json) => {
+            if (json && json.data) {
+                return json.data;
+            }
         });
     }
 }
 
 const api = new Api({
-    baseUrl: "https://around.nomoreparties.co/v1/group-1",
+     baseUrl: "https://api.holger.students.nomoreparties.site",
+       // baseUrl: "http://localhost:3001",
     headers: {
-        "Authorization": "cf0daf24-499f-4e4d-a691-bc6825f65b5e",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": ""
     }
 });
 

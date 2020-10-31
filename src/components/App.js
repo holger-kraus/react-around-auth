@@ -43,7 +43,8 @@ function App() {
     const history = useHistory();
 
     React.useEffect(() => {
-        api.getProfile().then((myProfile) => {
+        const token = localStorage.getItem('token');
+        api.getProfile(token).then((myProfile) => {
             setCurrentUser(myProfile);
         }).catch((err) => {
             console.log(err);
@@ -51,7 +52,8 @@ function App() {
     }, []);
 
     React.useEffect(() => {
-        api.getInitialCards().then((cards) => {
+        const token = localStorage.getItem('token');
+        api.getInitialCards(token).then((cards) => {
                 let initialCards = [];
                 cards.forEach((card) => {
                     initialCards.push(card);
@@ -66,11 +68,12 @@ function App() {
     React.useEffect(tokenCheck, []);
 
     function handleCardLike(card) {
+        const token = localStorage.getItem('token');
         // Check one more time if this card was already liked
         const isLiked = card.likes.some(i => i._id === currentUser._id);
 
         // Send a request to the API and getting the updated card data
-        api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
+        api.changeLikeCardStatus(card._id, !isLiked, token).then((newCard) => {
             // Create a new array based on the existing one and putting a new card into it
             const newCards = cards.map((c) => c._id === card._id ? newCard : c);
             // Update the state
@@ -81,8 +84,9 @@ function App() {
     }
 
     function handleCardDelete(deletedCard) {
+        const token = localStorage.getItem('token');
         setSubmitText(submitDeleting);
-        api.deleteCard(deletedCard._id).then(() => {
+        api.deleteCard(deletedCard._id, token).then(() => {
             const remainingCards = cards.filter((card) => card._id !== deletedCard._id)
             setCards(remainingCards);
             setIsConfirmationPopupOpen(false);
@@ -125,8 +129,9 @@ function App() {
     }
 
     function handleUpdateUser({name, about}) {
+        const token = localStorage.getItem('token');
         setSubmitText(submitSaving);
-        api.updateProfile(name, about).then((updateProfile) => {
+        api.updateProfile(name, about, token).then((updateProfile) => {
             setCurrentUser(updateProfile);
             setIsEditProfilePopupOpen(false);
         }).catch((err) => {
@@ -135,8 +140,9 @@ function App() {
     }
 
     function handleUpdateAvatar({avatar}) {
+        const token = localStorage.getItem('token');
         setSubmitText(submitSaving);
-        api.updateProfilePicture(avatar).then((updateProfile) => {
+        api.updateProfilePicture(avatar, token).then((updateProfile) => {
             setCurrentUser(updateProfile);
             setIssEditAvatarPopupOpen(false);
         }).catch((err) => {
@@ -145,8 +151,9 @@ function App() {
     }
 
     function handleAddPlace({title, link}) {
+        const token = localStorage.getItem('token');
         setSubmitText(submitCreating);
-        api.addCard(title, link).then((newCard) => {
+        api.addCard(title, link, token).then((newCard) => {
             setCards([...cards, newCard]);
             setIsAddPlacePopupOpen(false);
         }).catch((err) => {
@@ -155,8 +162,6 @@ function App() {
     }
 
     function handleSignup({email, password}) {
-        console.log(email);
-        console.log(password);
         authentication.signup(email, password).then((res) => {
             if (res && res.data) {
                 setIsInfoToolTipOpen(true);

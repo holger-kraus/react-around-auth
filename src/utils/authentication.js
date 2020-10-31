@@ -11,7 +11,10 @@ class Authentication {
         };
         const body = JSON.stringify({
             email: email,
-            password: password
+            password: password,
+            name: "Mister X",
+            about: "Secret Agent",
+            avatar: "https://www.google.de/url?sa=i&url=https%3A%2F%2Ftwitter.com%2Fmisterx77380473&psig=AOvVaw0sS4xVKQmblFof3FJrwX1-&ust=1603892034664000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLDl2czx1OwCFQAAAAAdAAAAABAD",
         });
         return this._sendRequestWithBody(signupUri, headers, body, "POST");
     }
@@ -63,7 +66,8 @@ class Authentication {
 }
 
 const authentication = new Authentication(
-    {baseUrl: "https://register.nomoreparties.co"}
+    {baseUrl: "https://api.holger.students.nomoreparties.site"}
+   // {baseUrl: "http://localhost:3001"}
 );
 
 export default authentication;
